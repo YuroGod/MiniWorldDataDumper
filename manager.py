@@ -14,7 +14,7 @@ class InstanceManager:
         self.libiworld = module_from_name(self.pm.process_handle, "libiworld.dll").lpBaseOfDll
 
         # TODO: 自动寻找实例地址
-        self.inst["RoleSkin"] = self.pm.read_int(self.libiworld + 0xB30420)  # v1.30.0 apiid: 110
+        self.inst["RoleSkin"] = self.pm.read_int(self.libiworld + 0xD56140)  # v1.31.0 apiid: 110
 
         # TODO: ItemDef, MonsterDef...
 
