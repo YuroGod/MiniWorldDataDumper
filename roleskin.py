@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 from pymem import Pymem
 
+from loguru import logger
 
 @dataclass
 class RoleSkinDef:
@@ -25,3 +26,11 @@ class RoleSkin:
         id_ = self.pm.read_int(roleskindef)
         name_ = self.pm.read_string(roleskindef + 0x4)
         return RoleSkinDef(id_, name_)
+
+    def show_all_item(self):
+        num = self.get_num()
+        for i in range(num):
+            id_ = self.get_by_index(i).id_
+            name_ = self.get_by_index(i).name_
+
+            logger.debug(f"id: {id_} | name: {name_}")
