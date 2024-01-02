@@ -12,10 +12,12 @@ class Dumper:
         self.pm = None
         self.libiworld = None
         self.instanceMgr = None
+        self.init_success = False
 
         self.proc_name = "MiniGameApp.exe"
 
         if self.init_process():
+            self.init_success = True
             logger.success("初始化进程信息成功!")
         else:
             logger.error("初始化进程信息失败, 请检查错误信息, 如无法解决请前往GitHub提交Issue")
@@ -35,6 +37,9 @@ class Dumper:
         self.instanceMgr = InstanceManager(self.pm)
 
         return True
+
+    def is_init_success(self):
+        return self.init_success
 
     @logger.catch
     def dump(self):

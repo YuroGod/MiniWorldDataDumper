@@ -29,8 +29,11 @@ class RoleSkin:
 
     def show_all_item(self):
         num = self.get_num()
-        for i in range(num):
-            id_ = self.get_by_index(i).id_
-            name_ = self.get_by_index(i).name_
+        if num > 0:
+            for i in range(num):
+                id_ = self.get_by_index(i).id_
+                name_ = self.get_by_index(i).name_
 
-            logger.debug(f"id: {id_} | name: {name_}")
+                logger.debug(f"id: {id_} | name: {name_}")
+        else:
+            logger.error("RoleSkin dump失败!")
